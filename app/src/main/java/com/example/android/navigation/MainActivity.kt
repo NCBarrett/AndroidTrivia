@@ -20,6 +20,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.ActivityMainBinding
 
@@ -29,7 +30,9 @@ class MainActivity : AppCompatActivity() {
         @Suppress("UNUSED_VARIABLE")
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
-        val navController = this.findNavController(R.id.titleFragment)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.titleFragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        //val navController = this.findNavController(R.id.titleFragment)
 
         NavigationUI.setupActionBarWithNavController(this, navController)
     }
